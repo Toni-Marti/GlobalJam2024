@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq5i047c4sppk"]
+
+[ext_resource type="Script" path="res://Scripts/GameMaster.gd" id="1_lqok7"]
+[ext_resource type="PackedScene" uid="uid://bwe83jo4jmmgv" path="res://Escenas/hand.tscn" id="1_pphaj"]
+[ext_resource type="Texture2D" uid="uid://btm0fbtgm8hix" path="res://Sprites/Fondo.png" id="2_ac8cm"]
+[ext_resource type="PackedScene" uid="uid://cxmvms06hotic" path="res://Escenas/bola.tscn" id="2_xhar8"]
+[ext_resource type="PackedScene" uid="uid://shes4i7hd7dt" path="res://Escenas/ojo.tscn" id="3_c5tr2"]
+[ext_resource type="PackedScene" uid="uid://bbatnmv28snar" path="res://Escenas/brazo.tscn" id="4_ysdph"]
+[ext_resource type="PackedScene" uid="uid://bs6cy0234r4sm" path="res://Escenas/Payaso.tscn" id="5_cjskq"]
+[ext_resource type="PackedScene" uid="uid://cece243j8pj6h" path="res://Escenas/telón.tscn" id="8_llygi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efcs2"]
+size = Vector2(669.5, 5831.38)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lqok7")
+
+[node name="Fondo" type="Sprite2D" parent="."]
+scale = Vector2(0.50293, 0.50293)
+texture = ExtResource("2_ac8cm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 0.261799
+
+[node name="OjoDcho" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_c5tr2")]
+position = Vector2(10, 209)
+target = NodePath("../Bola")
+
+[node name="OjoIzdo" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_c5tr2")]
+position = Vector2(-34, 212)
+target = NodePath("../Bola2")
+
+[node name="Payaso" parent="." instance=ExtResource("5_cjskq")]
+position = Vector2(0, 189.5)
+scale = Vector2(0.315, 0.315)
+
+[node name="BrazoI" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_ysdph")]
+position = Vector2(-61, 469)
+scale = Vector2(0.125, 0.125)
+target = NodePath("../LeftHand")
+
+[node name="BrazoD" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_ysdph")]
+position = Vector2(47, 470)
+scale = Vector2(0.125, 0.125)
+target = NodePath("../RightHand")
+
+[node name="Bola" parent="." instance=ExtResource("2_xhar8")]
+position = Vector2(-174, 77)
+
+[node name="Bola2" parent="." instance=ExtResource("2_xhar8")]
+<<<<<<< HEAD
+position = Vector2(181, 76)
+
+[node name="LeftHand" parent="." instance=ExtResource("1_pphaj")]
+position = Vector2(-180, 306.2)
+=======
+position = Vector2(162, 201)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-847, -195)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2206.31)
+shape = SubResource("RectangleShape2D_efcs2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1703, -2203)
+shape = SubResource("RectangleShape2D_efcs2")
+
+[node name="LeftHand" parent="." instance=ExtResource("1_pphaj")]
+position = Vector2(-189, 274)
+>>>>>>> 709a1927e14ac562baf3102c13a12e72b88dbcf2
+rotation = 0.261799
+collision_layer = 1
+max_h_vel = 600.0
+
+[node name="RightHand" parent="." instance=ExtResource("1_pphaj")]
+<<<<<<< HEAD
+position = Vector2(51, 306)
+=======
+position = Vector2(267, 274)
+>>>>>>> 709a1927e14ac562baf3102c13a12e72b88dbcf2
+rotation = -0.261799
+collision_layer = 2
+left_hand = false
+max_h_vel = 600.0
+
+[node name="Telón" parent="." instance=ExtResource("8_llygi")]
+position = Vector2(3, -4)
+scale = Vector2(0.5, 0.5)
