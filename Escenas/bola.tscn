@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxmvms06hotic"]
+
+[ext_resource type="Script" path="res://Scripts/bola.gd" id="1_sfa7h"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bdotc"]
+rough = true
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lsts3"]
+radius = 30.0
+
+[node name="Bola" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bdotc")
+script = ExtResource("1_sfa7h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lsts3")

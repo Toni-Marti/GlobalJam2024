@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs6cy0234r4sm"]
+
+[ext_resource type="Texture2D" uid="uid://c5rp4nf5wup04" path="res://Sprites/Payaso_Jam.png" id="1_75htr"]
+
+[node name="Payaso" type="Sprite2D"]
+texture = ExtResource("1_75htr")
