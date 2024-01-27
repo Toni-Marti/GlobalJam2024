@@ -116,3 +116,4 @@ func _on_ball_detection_body_entered(body):
 	if tweening or ball_on_hand:
 		return
 	ball_on_hand = body
+	
