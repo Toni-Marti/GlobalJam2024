@@ -17,7 +17,7 @@ load_path = "res://.godot/imported/reflejo_y_sombra.png-afe2ccdab1da49c9a95f05f6
 
 [node name="Bola" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 15
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_bdotc")
 script = ExtResource("1_sfa7h")
