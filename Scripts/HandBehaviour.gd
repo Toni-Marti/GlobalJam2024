@@ -32,14 +32,14 @@ func _ready():
 		left_action = "L_hand_l"
 		right_action = "L_hand_r"
 		hold_action = "L_hand_hold"
-		movment_bounds = Vector2(-get_viewport_rect().size.x/2 + ball_radious, -ball_radious)
+		movment_bounds = Vector2(-get_viewport_rect().size.x/2 - ball_radious, -ball_radious)
 		col_layer_index = 1
 	else:
 		left_action = "R_hand_l"
 		right_action = "R_hand_r"
 		hold_action = "R_hand_hold"
 		hold_mov_vec.x = -hold_mov_vec.x
-		movment_bounds = Vector2(ball_radious, get_viewport_rect().size.x/2 - ball_radious)
+		movment_bounds = Vector2(ball_radious, get_viewport_rect().size.x/2 + ball_radious)
 		col_layer_index = 2
 
 func _physics_process(delta):
@@ -104,11 +104,13 @@ func _physics_process(delta):
 		if ball_on_hand:
 			tween.tween_property(ball_on_hand, "collision_mask", curr_collision_mask, 0)
 			ball_on_hand.apply_central_impulse(-ball_on_hand.linear_velocity*ball_on_hand.mass*0.5)
-			ball_on_hand.apply_central_impulse(-hold_mov_vec * hold_offset.length() * 5)
-			ball_on_hand = null
+			var impulse = -hold_mov_vec * hold_offset.length()*5
+			if impulse.length() < 40:
+				impulse = impulse.normalized() * 40
+			ball_on_hand.apply_central_impulse(impulse)
 	
 	# BALL MAGNET
-	if ball_on_hand:
+	if ball_on_hand and not tweening:
 		ball_on_hand.apply_central_force((global_position - ball_on_hand.global_position).normalized() * magnet_force * delta)
 
 
@@ -116,3 +118,8 @@ func _on_ball_detection_body_entered(body):
 	if tweening or ball_on_hand:
 		return
 	ball_on_hand = body
+
+
+func _on_ball_enters_body_exited(body):
+	if body == ball_on_hand:
+		ball_on_hand = null

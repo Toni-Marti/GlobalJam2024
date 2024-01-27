@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3ylw4ult4td3"
-path="res://.godot/imported/Bocas_Jam(1).png-a4418fe60dcf68306f0dc2ae45f1ccfb.ctex"
+path="res://.godot/imported/Bocas_Jam(1).png-d4202b18078ee97e671ef413e0b5734e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bocas_Jam(1).png"
-dest_files=["res://.godot/imported/Bocas_Jam(1).png-a4418fe60dcf68306f0dc2ae45f1ccfb.ctex"]
+source_file="res://Sprites/Payaso/Bocas_Jam(1).png"
+dest_files=["res://.godot/imported/Bocas_Jam(1).png-d4202b18078ee97e671ef413e0b5734e.ctex"]
 
 [params]
 

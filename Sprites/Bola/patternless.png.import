@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5rp4nf5wup04"
-path="res://.godot/imported/Payaso_Jam.png-d74ba311b92d7cb8a833595a8b0c4779.ctex"
+uid="uid://b7oj7naeaioo7"
+path="res://.godot/imported/patternless.png-63d463b0ab8cacf57780aafde77717de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Payaso_Jam.png"
-dest_files=["res://.godot/imported/Payaso_Jam.png-d74ba311b92d7cb8a833595a8b0c4779.ctex"]
+source_file="res://Sprites/Bola/patternless.png"
+dest_files=["res://.godot/imported/patternless.png-63d463b0ab8cacf57780aafde77717de.ctex"]
 
 [params]
 

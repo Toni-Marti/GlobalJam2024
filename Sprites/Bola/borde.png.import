@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tqgwwehnbyfu"
-path="res://.godot/imported/Brazo_Jam.png-cfcb36c232e2b85819dfd165edb25434.ctex"
+uid="uid://ckowglbwjv0a6"
+path="res://.godot/imported/borde.png-b0831c46af12a3f0f475660fda019797.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Brazo_Jam.png"
-dest_files=["res://.godot/imported/Brazo_Jam.png-cfcb36c232e2b85819dfd165edb25434.ctex"]
+source_file="res://Sprites/Bola/borde.png"
+dest_files=["res://.godot/imported/borde.png-b0831c46af12a3f0f475660fda019797.ctex"]
 
 [params]
 

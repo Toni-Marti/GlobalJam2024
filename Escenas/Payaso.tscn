@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs6cy0234r4sm"]
+[gd_scene load_steps=3 format=3 uid="uid://bs6cy0234r4sm"]
 
-[ext_resource type="Texture2D" uid="uid://c5rp4nf5wup04" path="res://Sprites/Payaso_Jam.png" id="1_75htr"]
+[ext_resource type="Texture2D" uid="uid://c5rp4nf5wup04" path="res://Sprites/Payaso/Payaso_Jam.png" id="1_pas7d"]
+[ext_resource type="Texture2D" uid="uid://crbbemod4lal3" path="res://Sprites/Payaso/Bocas_Jam(2).png" id="2_xmx2h"]
 
 [node name="Payaso" type="Sprite2D"]
-texture = ExtResource("1_75htr")
+texture = ExtResource("1_pas7d")
+
+[node name="Boca" type="Sprite2D" parent="."]
+texture = ExtResource("2_xmx2h")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(37, 57)

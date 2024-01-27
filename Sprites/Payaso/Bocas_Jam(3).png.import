@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://didg30pggugax"
-path="res://.godot/imported/Bocas_Jam(4).png-033ce54d34eadaa3004710ede67cb23b.ctex"
+uid="uid://dx04qs5m24nnj"
+path="res://.godot/imported/Bocas_Jam(3).png-2d7c2ded1b2b941c6789de75f587e134.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bocas_Jam(4).png"
-dest_files=["res://.godot/imported/Bocas_Jam(4).png-033ce54d34eadaa3004710ede67cb23b.ctex"]
+source_file="res://Sprites/Payaso/Bocas_Jam(3).png"
+dest_files=["res://.godot/imported/Bocas_Jam(3).png-2d7c2ded1b2b941c6789de75f587e134.ctex"]
 
 [params]
 

@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxmvms06hotic"]
+[gd_scene load_steps=8 format=3 uid="uid://cxmvms06hotic"]
 
 [ext_resource type="Script" path="res://Scripts/bola.gd" id="1_sfa7h"]
+[ext_resource type="Texture2D" uid="uid://b7oj7naeaioo7" path="res://Sprites/Bola/patternless.png" id="2_5mpma"]
+[ext_resource type="Texture2D" uid="uid://ckowglbwjv0a6" path="res://Sprites/Bola/borde.png" id="3_p5oy3"]
+[ext_resource type="Script" path="res://Scripts/LightsAndShades.gd" id="4_s2u06"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bdotc"]
 rough = true
@@ -9,6 +12,9 @@ absorbent = true
 [sub_resource type="CircleShape2D" id="CircleShape2D_lsts3"]
 radius = 30.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7g5ls"]
+load_path = "res://.godot/imported/reflejo_y_sombra.png-afe2ccdab1da49c9a95f05f61d8adc19.ctex"
+
 [node name="Bola" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 7
@@ -16,8 +22,24 @@ mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_bdotc")
 script = ExtResource("1_sfa7h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lsts3")
+
+[node name="Unified_transform" type="Node2D" parent="."]
+position = Vector2(-4, 7)
+scale = Vector2(0.061, 0.061)
+
+[node name="Rotating" type="Node2D" parent="Unified_transform"]
+
+[node name="patron" type="Sprite2D" parent="Unified_transform/Rotating"]
+modulate = Color(0, 0.34902, 1, 1)
+texture = ExtResource("2_5mpma")
+
+[node name="borde" type="Sprite2D" parent="Unified_transform/Rotating"]
+texture = ExtResource("3_p5oy3")
+
+[node name="LightsAndShades" type="Sprite2D" parent="Unified_transform"]
+position = Vector2(65.5738, -114.754)
+texture = SubResource("CompressedTexture2D_7g5ls")
+offset = Vector2(-65.79, 144.975)
+script = ExtResource("4_s2u06")

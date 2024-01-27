@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csqxw1i0my5q"
-path="res://.godot/imported/base_brazo.png-6bce0b86ea5e294dedd8b023c8abfd06.ctex"
+path="res://.godot/imported/base_brazo.png-4304c5ddd9f88dbb20fa8f78d17c3d92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/base_brazo.png"
-dest_files=["res://.godot/imported/base_brazo.png-6bce0b86ea5e294dedd8b023c8abfd06.ctex"]
+source_file="res://Sprites/Payaso/base_brazo.png"
+dest_files=["res://.godot/imported/base_brazo.png-4304c5ddd9f88dbb20fa8f78d17c3d92.ctex"]
 
 [params]
 

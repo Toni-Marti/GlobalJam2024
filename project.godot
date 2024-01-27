@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Global Jam 2024"
-run/main_scene="res://Escenas/main_window.tscn"
+run/main_scene="res://Escenas/GameScene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1024
 window/size/viewport_height=1024
+window/stretch/mode="viewport"
 
 [input]
 
@@ -68,3 +69,4 @@ R_hand_hold={
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/screen_space_aa=1

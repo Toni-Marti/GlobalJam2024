@@ -1,18 +1,21 @@
 [gd_scene load_steps=7 format=3 uid="uid://bq5i047c4sppk"]
 
-[ext_resource type="Script" path="res://Scripts/MainScene.gd" id="1_i4yjj"]
+[ext_resource type="Script" path="res://Scripts/GameMaster.gd" id="1_lqok7"]
 [ext_resource type="PackedScene" uid="uid://bwe83jo4jmmgv" path="res://Escenas/hand.tscn" id="1_pphaj"]
-[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="2_l6soo"]
+[ext_resource type="Texture2D" uid="uid://btm0fbtgm8hix" path="res://Sprites/Fondo.png" id="2_ac8cm"]
 [ext_resource type="PackedScene" uid="uid://cxmvms06hotic" path="res://Escenas/bola.tscn" id="2_xhar8"]
 [ext_resource type="PackedScene" uid="uid://bbatnmv28snar" path="res://Escenas/brazo.tscn" id="4_ysdph"]
 [ext_resource type="PackedScene" uid="uid://bs6cy0234r4sm" path="res://Escenas/Payaso.tscn" id="5_cjskq"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_i4yjj")
+script = ExtResource("1_lqok7")
+
+[node name="Fondo" type="Sprite2D" parent="."]
+scale = Vector2(0.50293, 0.50293)
+texture = ExtResource("2_ac8cm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 0.261799
-script = ExtResource("2_l6soo")
 
 [node name="Payaso" parent="." instance=ExtResource("5_cjskq")]
 position = Vector2(0, 189.5)
@@ -21,30 +24,27 @@ scale = Vector2(0.315, 0.315)
 [node name="BrazoI" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_ysdph")]
 position = Vector2(-61, 469)
 scale = Vector2(0.125, 0.125)
-target = NodePath("../Hands/LeftHand")
+target = NodePath("../LeftHand")
 
 [node name="BrazoD" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_ysdph")]
 position = Vector2(47, 470)
 scale = Vector2(0.125, 0.125)
-target = NodePath("../Hands/RightHand")
+target = NodePath("../RightHand")
 
 [node name="Bola" parent="." instance=ExtResource("2_xhar8")]
 position = Vector2(-195, 14)
 
 [node name="Bola2" parent="." instance=ExtResource("2_xhar8")]
-position = Vector2(265, 72)
+position = Vector2(181, 76)
 
-[node name="Hands" type="Node2D" parent="."]
-position = Vector2(0, 274)
-
-[node name="LeftHand" parent="Hands" instance=ExtResource("1_pphaj")]
-position = Vector2(-189, 0)
+[node name="LeftHand" parent="." instance=ExtResource("1_pphaj")]
+position = Vector2(-180, 306.2)
 rotation = 0.261799
 collision_layer = 1
 max_h_vel = 600.0
 
-[node name="RightHand" parent="Hands" instance=ExtResource("1_pphaj")]
-position = Vector2(267, 0)
+[node name="RightHand" parent="." instance=ExtResource("1_pphaj")]
+position = Vector2(51, 306)
 rotation = -0.261799
 collision_layer = 2
 left_hand = false
