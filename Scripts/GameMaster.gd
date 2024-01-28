@@ -24,10 +24,19 @@ func addBall(left:bool):
 		arm = $BrazoD
 		sprite_brazo_espalda = $Payaso/BrazoEspaldaD
 	
+	await  get_tree().create_timer(0.3).timeout
+	
 	hand.visible = false
 	hand.can_move = false
 	arm.visible = false
 	sprite_brazo_espalda.visible = true
+	
+	await get_tree().create_timer(0.5).timeout
+	hand.visible = true
+	hand.can_move = true
+	arm.visible = true
+	sprite_brazo_espalda.visible = false
+	instantiateBall(hand.global_position)
 
 func addBallLeft():
 	addBall(true)
