@@ -6,5 +6,12 @@ func _process(delta):
 		return
 	
 	var target = get_parent().target
-	
 	look_at(target.global_position)
+	
+	if abs(global_position.x) > 120:
+		$Lateral.visible = true
+		$Frontal.visible = false
+	else:
+		$Lateral.visible = false
+		$Frontal.visible = true
+		

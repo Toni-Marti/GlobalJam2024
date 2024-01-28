@@ -19,7 +19,8 @@ var held_down_timer : float
 var hold_mov_vec : Vector2 = Vector2(-sin(mov_angle), cos(mov_angle))
 var pos_with_no_offset : Vector2
 var hold_offset : Vector2 = Vector2()
-var movment_bounds : Vector2 
+var movment_bounds : Vector2
+var can_move = false
 
 var ball_on_hand : Ball = null
 var tweening = false
@@ -46,6 +47,9 @@ func _ready():
 		$Sprites.scale.y = -1
 
 func _physics_process(delta):
+	if not can_move:
+		return
+	
 	# MOVMENT
 	var tring_to_move : bool = false
 	var moving_oposite : bool = false

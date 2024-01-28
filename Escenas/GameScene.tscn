@@ -3,29 +3,28 @@
 [ext_resource type="Script" path="res://Scripts/GameMaster.gd" id="1_lqok7"]
 [ext_resource type="PackedScene" uid="uid://bwe83jo4jmmgv" path="res://Escenas/hand.tscn" id="1_pphaj"]
 [ext_resource type="Texture2D" uid="uid://btm0fbtgm8hix" path="res://Sprites/Fondo.png" id="2_ac8cm"]
-[ext_resource type="PackedScene" uid="uid://cxmvms06hotic" path="res://Escenas/bola.tscn" id="2_xhar8"]
 [ext_resource type="PackedScene" uid="uid://d2vo6lypovfa" path="res://Escenas/ojo.tscn" id="3_a0gle"]
 [ext_resource type="PackedScene" uid="uid://bbatnmv28snar" path="res://Escenas/brazo.tscn" id="4_ysdph"]
 [ext_resource type="PackedScene" uid="uid://bs6cy0234r4sm" path="res://Escenas/Payaso.tscn" id="5_cjskq"]
-[ext_resource type="PackedScene" uid="uid://ceay7yhk21cho" path="res://Escenas/telón.tscn" id="8_yhe35"]
+[ext_resource type="Script" path="res://Scripts/telon.gd" id="7_dmoxg"]
+[ext_resource type="Texture2D" uid="uid://ct5en8uqhwc3m" path="res://Sprites/Telón_Jam.png" id="8_wmsfj"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lqok7")
 
 [node name="Fondo" type="Sprite2D" parent="."]
+z_index = -10
 scale = Vector2(0.50293, 0.50293)
 texture = ExtResource("2_ac8cm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 0.261799
 
-[node name="OjoI" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_a0gle")]
+[node name="OjoI" parent="." instance=ExtResource("3_a0gle")]
 position = Vector2(-32, 212)
-target = NodePath("../Bola2")
 
-[node name="OjoD" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_a0gle")]
+[node name="OjoD" parent="." instance=ExtResource("3_a0gle")]
 position = Vector2(11, 209)
-target = NodePath("../Bola")
 
 [node name="Payaso" parent="." instance=ExtResource("5_cjskq")]
 position = Vector2(0, 189.5)
@@ -56,12 +55,21 @@ left_hand = false
 max_h_vel = 600.0
 target = NodePath("../BrazoD")
 
-[node name="Bola" parent="." instance=ExtResource("2_xhar8")]
-position = Vector2(-195, 14)
-
-[node name="Bola2" parent="." instance=ExtResource("2_xhar8")]
-position = Vector2(181, 76)
-
-[node name="Telón" parent="." instance=ExtResource("8_yhe35")]
+[node name="Telon" type="Node2D" parent="."]
 z_index = 10
-scale = Vector2(0.505, 0.505)
+script = ExtResource("7_dmoxg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Telon"]
+position = Vector2(0, -161)
+scale = Vector2(0.841797, 0.666992)
+texture = ExtResource("8_wmsfj")
+
+[node name="boton" type="Button" parent="Telon"]
+offset_left = -196.0
+offset_top = -40.0
+offset_right = 194.0
+offset_bottom = 39.9993
+text = "START"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Telon/boton" to="Telon" method="_on_boton_pressed"]
