@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c5rp4nf5wup04" path="res://Sprites/Payaso/Payaso_Jam.png" id="1_pas7d"]
 [ext_resource type="Texture2D" uid="uid://cypqbihiemu2y" path="res://Sprites/Payaso/BrazoTrasEspalda.png" id="2_ruld3"]
-[ext_resource type="Texture2D" uid="uid://crbbemod4lal3" path="res://Sprites/Payaso/Bocas_Jam(2).png" id="2_xmx2h"]
+[ext_resource type="Texture2D" uid="uid://cux8p2rsafk3x" path="res://Sprites/Payaso/BocaI.png" id="3_6ljwr"]
 
 [node name="Payaso" type="Sprite2D"]
 texture = ExtResource("1_pas7d")
@@ -20,7 +20,7 @@ texture = ExtResource("2_ruld3")
 flip_h = true
 
 [node name="Boca" type="Sprite2D" parent="."]
-texture = ExtResource("2_xmx2h")
+texture = ExtResource("3_6ljwr")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(37, 57)
