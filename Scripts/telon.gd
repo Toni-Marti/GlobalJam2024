@@ -1,5 +1,9 @@
-extends Node2D
+extends Node
 
-func _on_boton_pressed():
+func subeTelon():
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0, -1500), 1).as_relative().set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self, "position", Vector2(0, -1100), 1).set_trans(Tween.TRANS_ELASTIC)
+
+func bajaTelon():
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0, 0), 1).set_trans(Tween.TRANS_ELASTIC)

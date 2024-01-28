@@ -1,16 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq5i047c4sppk"]
+[gd_scene load_steps=12 format=3 uid="uid://bq5i047c4sppk"]
 
 [ext_resource type="Script" path="res://Scripts/GameMaster.gd" id="1_lqok7"]
 [ext_resource type="PackedScene" uid="uid://bwe83jo4jmmgv" path="res://Escenas/hand.tscn" id="1_pphaj"]
+[ext_resource type="AudioStream" uid="uid://dft1m3i04rmt" path="res://Audio/Malabares_Torpes_main_theme.wav" id="2_000cq"]
 [ext_resource type="Texture2D" uid="uid://btm0fbtgm8hix" path="res://Sprites/Fondo.png" id="2_ac8cm"]
 [ext_resource type="PackedScene" uid="uid://d2vo6lypovfa" path="res://Escenas/ojo.tscn" id="3_a0gle"]
+[ext_resource type="FontFile" uid="uid://bcnv0d8v1jlxi" path="res://Font/RubikVinyl-Regular.ttf" id="3_anm7s"]
 [ext_resource type="PackedScene" uid="uid://bbatnmv28snar" path="res://Escenas/brazo.tscn" id="4_ysdph"]
 [ext_resource type="PackedScene" uid="uid://bs6cy0234r4sm" path="res://Escenas/Payaso.tscn" id="5_cjskq"]
 [ext_resource type="Script" path="res://Scripts/telon.gd" id="7_dmoxg"]
 [ext_resource type="Texture2D" uid="uid://ct5en8uqhwc3m" path="res://Sprites/Telón_Jam.png" id="8_wmsfj"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_433e1"]
+normal = Vector2(4.44253e-06, -1)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lqok7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_000cq")
+
+[node name="Text" type="Node2D" parent="."]
+visible = false
+z_index = 11
+position = Vector2(0, -407)
+
+[node name="Score" type="Label" parent="Text"]
+offset_left = -453.0
+offset_right = -148.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("3_anm7s")
+theme_override_font_sizes/font_size = 75
+text = "SCORE: "
+
+[node name="ScoreNum" type="Label" parent="Text/Score"]
+layout_mode = 0
+offset_left = 307.795
+offset_right = 612.795
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("3_anm7s")
+theme_override_font_sizes/font_size = 75
+text = "0"
+
+[node name="Record" type="Label" parent="Text"]
+offset_left = -454.0
+offset_top = 92.0
+offset_right = -105.0
+offset_bottom = 182.0
+theme_override_fonts/font = ExtResource("3_anm7s")
+theme_override_font_sizes/font_size = 75
+text = "RECORD:"
+
+[node name="RecordNum" type="Label" parent="Text/Record"]
+layout_mode = 0
+offset_left = 364.0
+offset_right = 669.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("3_anm7s")
+theme_override_font_sizes/font_size = 75
+text = "0"
 
 [node name="Fondo" type="Sprite2D" parent="."]
 z_index = -10
@@ -64,13 +112,43 @@ position = Vector2(0, -161)
 scale = Vector2(0.841797, 0.666992)
 texture = ExtResource("8_wmsfj")
 
-[node name="boton" type="Button" parent="Telon"]
-offset_left = -196.0
-offset_top = -40.0
-offset_right = 194.0
-offset_bottom = 39.9993
-text = "START"
+[node name="PayBtn" type="Button" parent="Telon"]
+offset_left = -137.0
+offset_top = -45.0
+offset_right = 138.97
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("3_anm7s")
+theme_override_font_sizes/font_size = 66
+text = "PLAY"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Telon/boton" to="." method="startGame"]
-[connection signal="pressed" from="Telon/boton" to="Telon" method="_on_boton_pressed"]
+[node name="EexitBtn" type="Button" parent="Telon"]
+visible = false
+offset_left = -196.0
+offset_top = 10.0
+offset_right = 194.0
+offset_bottom = 89.9993
+text = "EXIT"
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOverZones" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Bottom" type="CollisionShape2D" parent="GameOverZones"]
+position = Vector2(-3, 800)
+shape = SubResource("WorldBoundaryShape2D_433e1")
+
+[node name="Left" type="CollisionShape2D" parent="GameOverZones"]
+position = Vector2(-1000, 0)
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_433e1")
+
+[node name="Right" type="CollisionShape2D" parent="GameOverZones"]
+position = Vector2(1000, 0)
+rotation = -1.57079
+shape = SubResource("WorldBoundaryShape2D_433e1")
+
+[connection signal="pressed" from="Telon/PayBtn" to="." method="startGame"]
+[connection signal="pressed" from="Telon/PayBtn" to="Telon" method="subeTelon"]
+[connection signal="body_entered" from="GameOverZones" to="." method="_on_game_over_zones_body_entered"]

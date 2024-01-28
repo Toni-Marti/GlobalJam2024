@@ -1,6 +1,7 @@
 extends AnimatableBody2D
 
 signal ball_exited
+signal ball_enteted
 
 @export var left_hand :bool = true
 @export var mov_angle :float = PI/12
@@ -48,6 +49,10 @@ func _ready():
 		movment_bounds = Vector2(ball_radious, get_viewport_rect().size.x/2 + ball_radious)
 		col_layer_index = 2
 		$Sprites.scale.y = -1
+
+func setBallCollisionMask(ball, time, mask):
+	await get_tree().create_timer(time).timeout
+	ball.collision_mask = mask
 
 func _physics_process(delta):
 	if not can_move:
@@ -100,24 +105,29 @@ func _physics_process(delta):
 	
 	# BALL LAUNCHING
 	if Input.is_action_just_released(hold_action):
-		var curr_collision_mask
-		if ball_on_hand:
-			curr_collision_mask = ball_on_hand.collision_mask
-			ball_on_hand.set_collision_mask_value(col_layer_index, false)
-		
 		var tween = create_tween()
 		tweening = true
 		tween.tween_property(self, "hold_offset", -hold_offset, 0.1).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(self, "hold_offset", Vector2(), 0.05).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(self, "tweening", false, 0)
 		
-		if ball_on_hand:
-			tween.tween_property(ball_on_hand, "collision_mask", curr_collision_mask, 0)
-			ball_on_hand.apply_central_impulse(-ball_on_hand.linear_velocity*ball_on_hand.mass*0.5)
-			var impulse = -hold_mov_vec * hold_offset.length()*5
-			if impulse.length() < 70:
-				impulse = impulse.normalized() * 70
-			ball_on_hand.apply_central_impulse(impulse)
+		if not ball_on_hand:
+			return
+		
+		
+		var curr_collision_mask = ball_on_hand.collision_mask
+		ball_on_hand.set_collision_mask_value(col_layer_index, false)
+		
+		ball_on_hand.apply_central_impulse(-ball_on_hand.linear_velocity*ball_on_hand.mass*0.9)
+		
+		var impulse = -hold_mov_vec * hold_offset.length()*5
+		if impulse.length() == 0:
+			impulse = -hold_mov_vec	
+		if impulse.length() < 40:
+			impulse = impulse.normalized() * 40
+		ball_on_hand.apply_central_impulse(impulse)
+		
+		setBallCollisionMask(ball_on_hand, 0.05, curr_collision_mask)
 	
 	# BALL MAGNET
 	if ball_on_hand and not tweening:
