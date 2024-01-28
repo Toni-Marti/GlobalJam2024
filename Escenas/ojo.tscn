@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://shes4i7hd7dt"]
+[gd_scene load_steps=4 format=3 uid="uid://d2vo6lypovfa"]
 
 [ext_resource type="Texture2D" uid="uid://b33vdvyil5n6" path="res://Sprites/el_blanco_de_los_ojos.png" id="1_djx58"]
 [ext_resource type="Script" path="res://Scripts/ojos.gd" id="2_rp6rh"]
-[ext_resource type="Texture2D" uid="uid://cevoqp6qemcsw" path="res://Sprites/bola.png" id="3_uo1bt"]
+[ext_resource type="Texture2D" uid="uid://1oncmyh72yeg" path="res://Sprites/Payaso/pupila.png" id="3_3cpoc"]
 
 [node name="Ojo" type="Sprite2D"]
 scale = Vector2(0.565, 0.565)
@@ -11,5 +11,4 @@ script = ExtResource("2_rp6rh")
 
 [node name="pupuila" type="Sprite2D" parent="."]
 position = Vector2(3.8147e-06, 1.19209e-07)
-scale = Vector2(0.0707964, 0.0707965)
-texture = ExtResource("3_uo1bt")
+texture = ExtResource("3_3cpoc")

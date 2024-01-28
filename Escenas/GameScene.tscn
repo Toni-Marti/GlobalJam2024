@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq5i047c4sppk"]
+[gd_scene load_steps=9 format=3 uid="uid://bq5i047c4sppk"]
 
 [ext_resource type="Script" path="res://Scripts/GameMaster.gd" id="1_lqok7"]
 [ext_resource type="PackedScene" uid="uid://bwe83jo4jmmgv" path="res://Escenas/hand.tscn" id="1_pphaj"]
 [ext_resource type="Texture2D" uid="uid://btm0fbtgm8hix" path="res://Sprites/Fondo.png" id="2_ac8cm"]
 [ext_resource type="PackedScene" uid="uid://cxmvms06hotic" path="res://Escenas/bola.tscn" id="2_xhar8"]
+[ext_resource type="PackedScene" uid="uid://d2vo6lypovfa" path="res://Escenas/ojo.tscn" id="3_a0gle"]
 [ext_resource type="PackedScene" uid="uid://bbatnmv28snar" path="res://Escenas/brazo.tscn" id="4_ysdph"]
 [ext_resource type="PackedScene" uid="uid://bs6cy0234r4sm" path="res://Escenas/Payaso.tscn" id="5_cjskq"]
+[ext_resource type="PackedScene" uid="uid://ceay7yhk21cho" path="res://Escenas/telón.tscn" id="8_yhe35"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lqok7")
@@ -16,6 +18,14 @@ texture = ExtResource("2_ac8cm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 0.261799
+
+[node name="OjoI" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_a0gle")]
+position = Vector2(-32, 212)
+target = NodePath("../Bola2")
+
+[node name="OjoD" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_a0gle")]
+position = Vector2(11, 209)
+target = NodePath("../Bola")
 
 [node name="Payaso" parent="." instance=ExtResource("5_cjskq")]
 position = Vector2(0, 189.5)
@@ -31,21 +41,27 @@ position = Vector2(47, 470)
 scale = Vector2(0.125, 0.125)
 target = NodePath("../RightHand")
 
+[node name="LeftHand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_pphaj")]
+position = Vector2(-180, 306.2)
+rotation = 0.261799
+collision_layer = 1
+max_h_vel = 600.0
+target = NodePath("../BrazoI")
+
+[node name="RightHand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_pphaj")]
+position = Vector2(51, 306)
+rotation = -0.261799
+collision_layer = 2
+left_hand = false
+max_h_vel = 600.0
+target = NodePath("../BrazoD")
+
 [node name="Bola" parent="." instance=ExtResource("2_xhar8")]
 position = Vector2(-195, 14)
 
 [node name="Bola2" parent="." instance=ExtResource("2_xhar8")]
 position = Vector2(181, 76)
 
-[node name="LeftHand" parent="." instance=ExtResource("1_pphaj")]
-position = Vector2(-180, 306.2)
-rotation = 0.261799
-collision_layer = 1
-max_h_vel = 600.0
-
-[node name="RightHand" parent="." instance=ExtResource("1_pphaj")]
-position = Vector2(51, 306)
-rotation = -0.261799
-collision_layer = 2
-left_hand = false
-max_h_vel = 600.0
+[node name="Telón" parent="." instance=ExtResource("8_yhe35")]
+z_index = 10
+scale = Vector2(0.505, 0.505)

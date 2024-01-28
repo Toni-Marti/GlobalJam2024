@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwe83jo4jmmgv"]
+[gd_scene load_steps=10 format=3 uid="uid://bwe83jo4jmmgv"]
 
 [ext_resource type="Script" path="res://Scripts/HandBehaviour.gd" id="1_pkq8g"]
 [ext_resource type="Script" path="res://Scripts/HandColliderGeneration.gd" id="2_tgu08"]
+[ext_resource type="Texture2D" uid="uid://pgnpdp2hj8hu" path="res://Sprites/Payaso/mano_lateral.png" id="3_8gya7"]
+[ext_resource type="Script" path="res://Scripts/VisualMano.gd" id="3_wprsl"]
+[ext_resource type="Texture2D" uid="uid://5n55fvlek32g" path="res://Sprites/Payaso/dedo.png" id="4_woxre"]
+[ext_resource type="Texture2D" uid="uid://wefh5nyd8lmy" path="res://Sprites/Payaso/mano_frontal.png" id="6_lfb6j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c58bp"]
 radius = 8.0
@@ -27,7 +31,7 @@ max_down_dist = 500.0
 magnet_force = 30000.0
 
 [node name="HandCollider" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-34.641, -26, -20, -11.359, -2.44929e-15, -6, 20, -11.359, 34.641, -26, 52, -46, 45.0333, -20, 26, -0.966679, -3.18408e-15, 6, -26, -0.966679, -45.0333, -20, -52, -46)
+polygon = PackedVector2Array(-34.641, -3, -20, 11.641, -2.44929e-15, 17, 20, 11.641, 34.641, -3, 52, -23, 45.0333, 3, 26, 22.0333, -3.18408e-15, 29, -26, 22.0333, -45.0333, 3, -52, -23)
 script = ExtResource("2_tgu08")
 hand_radious = 40.0
 thickness = 1.3
@@ -54,6 +58,27 @@ position = Vector2(23, -10)
 rotation = 4.18878
 shape = SubResource("CapsuleShape2D_3hghj")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprites" type="Node2D" parent="."]
+script = ExtResource("3_wprsl")
+
+[node name="Lateral" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(-15, 19.165)
+rotation = 0.785397
+scale = Vector2(0.148571, 0.148571)
+texture = ExtResource("3_8gya7")
+
+[node name="Dedo" type="Sprite2D" parent="Sprites/Lateral"]
+z_index = 1
+texture = ExtResource("4_woxre")
+
+[node name="Frontal" type="Sprite2D" parent="Sprites"]
+z_index = 1
+position = Vector2(2, 1)
+rotation = -4.6035
+scale = Vector2(0.221567, 0.221567)
+texture = ExtResource("6_lfb6j")
 
 [connection signal="body_entered" from="BallEnters" to="." method="_on_ball_detection_body_entered"]
 [connection signal="body_exited" from="BallEnters" to="." method="_on_ball_enters_body_exited"]

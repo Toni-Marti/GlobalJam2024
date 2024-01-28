@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct5en8uqhwc3m"
-path="res://.godot/imported/Telón_Jam.png-2b44c8e1035b855be83a6bb17f91dba7.ctex"
+uid="uid://wefh5nyd8lmy"
+path="res://.godot/imported/mano_frontal.png-296cc35a106e47130c4e623782b6f133.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Telón_Jam.png"
-dest_files=["res://.godot/imported/Telón_Jam.png-2b44c8e1035b855be83a6bb17f91dba7.ctex"]
+source_file="res://Sprites/Payaso/mano_frontal.png"
+dest_files=["res://.godot/imported/mano_frontal.png-296cc35a106e47130c4e623782b6f133.ctex"]
 
 [params]
 

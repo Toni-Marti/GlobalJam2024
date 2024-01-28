@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct5en8uqhwc3m"
-path="res://.godot/imported/Telón_Jam.png-2b44c8e1035b855be83a6bb17f91dba7.ctex"
+uid="uid://5n55fvlek32g"
+path="res://.godot/imported/dedo.png-04b531870407657e7b037f348115c696.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Telón_Jam.png"
-dest_files=["res://.godot/imported/Telón_Jam.png-2b44c8e1035b855be83a6bb17f91dba7.ctex"]
+source_file="res://Sprites/Payaso/dedo.png"
+dest_files=["res://.godot/imported/dedo.png-04b531870407657e7b037f348115c696.ctex"]
 
 [params]
 

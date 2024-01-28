@@ -7,6 +7,8 @@ extends AnimatableBody2D
 @export var down_vel :float = 1
 @export var max_down_dist : float = 100
 
+@export var target : Node2D
+
 var left_action : String
 var right_action : String
 var hold_action : String
@@ -41,6 +43,7 @@ func _ready():
 		hold_mov_vec.x = -hold_mov_vec.x
 		movment_bounds = Vector2(ball_radious, get_viewport_rect().size.x/2 + ball_radious)
 		col_layer_index = 2
+		$Sprites.scale.y = -1
 
 func _physics_process(delta):
 	# MOVMENT
@@ -105,8 +108,8 @@ func _physics_process(delta):
 			tween.tween_property(ball_on_hand, "collision_mask", curr_collision_mask, 0)
 			ball_on_hand.apply_central_impulse(-ball_on_hand.linear_velocity*ball_on_hand.mass*0.5)
 			var impulse = -hold_mov_vec * hold_offset.length()*5
-			if impulse.length() < 40:
-				impulse = impulse.normalized() * 40
+			if impulse.length() < 70:
+				impulse = impulse.normalized() * 70
 			ball_on_hand.apply_central_impulse(impulse)
 	
 	# BALL MAGNET
