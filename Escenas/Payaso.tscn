@@ -7,10 +7,17 @@
 [node name="Payaso" type="Sprite2D"]
 texture = ExtResource("1_pas7d")
 
-[node name="BrazoEspalda" type="Sprite2D" parent="."]
+[node name="BrazoEspaldaD" type="Sprite2D" parent="."]
 visible = false
 z_index = -1
 texture = ExtResource("2_ruld3")
+
+[node name="BrazoEspaldaI" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(-57, -3)
+texture = ExtResource("2_ruld3")
+flip_h = true
 
 [node name="Boca" type="Sprite2D" parent="."]
 texture = ExtResource("2_xmx2h")

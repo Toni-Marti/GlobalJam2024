@@ -1,5 +1,7 @@
 extends AnimatableBody2D
 
+signal ball_exited
+
 @export var left_hand :bool = true
 @export var mov_angle :float = PI/12
 @export var h_accel :float = 1000
@@ -26,6 +28,7 @@ var ball_on_hand : Ball = null
 var tweening = false
 @export var magnet_force : float = 60000
 var col_layer_index : int
+
 
 func _ready():
 	var ball_radious = $HandCollider.get_outter_radious()
@@ -118,15 +121,17 @@ func _physics_process(delta):
 	
 	# BALL MAGNET
 	if ball_on_hand and not tweening:
-		ball_on_hand.apply_central_force((global_position - ball_on_hand.global_position).normalized() * magnet_force * delta)
+		ball_on_hand.apply_central_force(($ImpulseTarget.global_position - ball_on_hand.global_position).normalized() * magnet_force * delta)
 
 
-func _on_ball_detection_body_entered(body):
+func _on_body_entered(body):
 	if tweening or ball_on_hand:
 		return
 	ball_on_hand = body
+	body.lastHand = self
 
 
-func _on_ball_enters_body_exited(body):
+func _on_body_exited(body):
+	ball_exited.emit()
 	if body == ball_on_hand:
 		ball_on_hand = null

@@ -44,9 +44,5 @@ func generateShape():
 		var actual_a = total_arch - delta_a*i
 		new_vertices.append(outter_radious *Vector2(-cos(actual_a), sin(actual_a)))
 	
-	var center_offset = Vector2(0, -(outter_radious + hand_radious)/4)
-	for i in range(new_vertices.size()):
-		new_vertices[i] += center_offset
-	
 	polygon = new_vertices
 

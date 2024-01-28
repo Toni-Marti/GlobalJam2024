@@ -8,7 +8,7 @@ func _process(delta):
 	var target = get_parent().target
 	look_at(target.global_position)
 	
-	if abs(global_position.x) > 120:
+	if abs(global_position.x) > 100:
 		$Lateral.visible = true
 		$Frontal.visible = false
 	else:
